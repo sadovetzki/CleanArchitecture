@@ -7,6 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
 using CleanArchitecture.MVC.Data;
+using CleanArchitecture.Infra.Data.Context;
 
 namespace CleanArchitecture.MVC
 {
@@ -23,10 +24,18 @@ namespace CleanArchitecture.MVC
 		public void ConfigureServices(IServiceCollection services)
 		{
 			services.AddDbContext<ApplicationDbContext>(options =>
-				options.UseSqlServer(
-					Configuration.GetConnectionString("UniversityIdentityDBConnection")));
+			{
+				options.UseSqlServer(Configuration.GetConnectionString("UniversityIdentityDBConnection"));
+			});
+			
 			services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
 				.AddEntityFrameworkStores<ApplicationDbContext>();
+			
+			services.AddDbContext<UniversityDbContext>(options =>
+			{
+				options.UseSqlServer(Configuration.GetConnectionString("University"));
+			});
+
 			services.AddControllersWithViews();
 			services.AddRazorPages();
 		}
