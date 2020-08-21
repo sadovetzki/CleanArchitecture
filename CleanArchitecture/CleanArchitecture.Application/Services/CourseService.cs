@@ -1,14 +1,24 @@
 ﻿using CleanArchitecture.Application.Interfaces;
 using CleanArchitecture.Application.ViewModels;
-using System.Collections.Generic;
+using CleanArchitecture.Domain.Interfaces;
 
 namespace CleanArchitecture.Application.Services
 {
 	public class CourseService : ICourseService
 	{
-		public IEnumerable<CourseViewModel> GetCourses()
+		private readonly ICourseRepository _courseRepository;
+
+		public CourseService(ICourseRepository courseRepository)
 		{
-			throw new System.NotImplementedException();
+			this._courseRepository = courseRepository;
+		}
+
+		public CourseViewModel GetCourses()
+		{
+			return new CourseViewModel
+			{
+				Courses = this._courseRepository.GetCourses()
+			};
 		}
 	}
 }
