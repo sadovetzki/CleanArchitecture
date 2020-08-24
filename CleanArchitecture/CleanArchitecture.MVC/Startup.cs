@@ -10,6 +10,7 @@ using CleanArchitecture.MVC.Data;
 using CleanArchitecture.Infra.Data.Context;
 using CleanArchitecture.Infra.IoC;
 using MediatR;
+using CleanArchitecture.MVC.Configuration;
 
 namespace CleanArchitecture.MVC
 {
@@ -43,6 +44,7 @@ namespace CleanArchitecture.MVC
 
 			services.AddMediatR(typeof(Startup));
 
+			services.RegisterAutoMapper();
 			RegisterServices(services);
 		}
 
