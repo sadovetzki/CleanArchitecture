@@ -9,6 +9,7 @@ using Microsoft.Extensions.Hosting;
 using CleanArchitecture.MVC.Data;
 using CleanArchitecture.Infra.Data.Context;
 using CleanArchitecture.Infra.IoC;
+using MediatR;
 
 namespace CleanArchitecture.MVC
 {
@@ -39,6 +40,8 @@ namespace CleanArchitecture.MVC
 
 			services.AddControllersWithViews();
 			services.AddRazorPages();
+
+			services.AddMediatR(typeof(Startup));
 
 			RegisterServices(services);
 		}
