@@ -9,7 +9,6 @@ using Microsoft.Extensions.Hosting;
 using CleanArchitecture.MVC.Data;
 using CleanArchitecture.Infra.Data.Context;
 using CleanArchitecture.Infra.IoC;
-using System;
 
 namespace CleanArchitecture.MVC
 {
