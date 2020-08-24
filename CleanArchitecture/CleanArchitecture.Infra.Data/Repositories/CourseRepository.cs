@@ -14,6 +14,12 @@ namespace CleanArchitecture.Infra.Data.Repositories
 			this.context = context;
 		}
 
+		public void Add(Course course)
+		{
+			context.Courses.Add(course);
+			context.SaveChanges();
+		}
+
 		public IEnumerable<Course> GetCourses()
 		{
 			return context.Courses;
